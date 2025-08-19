@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>WebHID 綜合範例</title>
+  <style>
+    .byte-input { width: 3em; text-align: center; }
+  </style>
+</head>
+<body>
+  <h1>WebHID 綜合範例</h1>
+  <button id="request">請求裝置授權</button>
+  <button id="list">列舉所有裝置</button>
+  <div>
+    <label>Vendor ID (16進位): <input id="vid" type="text" value="48d" size="6"></label>
+    <label>Product ID (16進位): <input id="pid" type="text" value="5711" size="6"></label>
+    <button id="connectById">指定ID連線</button>
+  </div>
+  <div>
+    <label>裝置序號(從1開始): <input id="deviceIndex" type="number" value="1" min="1" size="4"></label>
+    <button id="connectByIndex">指定序號連線</button>
+  </div>  
+  <div>
+    <label>輸入格式: 16進位</label><br>
+    <label>Report ID: <input id="reportId" type="text" value="cc" size="4"></label>
+  </div>
+<!-- ...existing code... -->
+  <div>
+    <label>輸入格式: 16進位</label><br>
+    <!-- 產生32個byte輸入框 -->
+    <input class="byte-input" id="Rid" type="text" value="cc" maxlength="2" disabled> 
+    <input class="byte-input" id="byte0" type="text" value="20" maxlength="2">
+    <input class="byte-input" id="byte1" type="text" value="ff" maxlength="2">
+    <input class="byte-input" id="byte2" type="text" value="07" maxlength="2">
+    <input class="byte-input" id="byte3" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte4" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte5" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte6" type="text" value="00" maxlength="2"><br>
+    <input class="byte-input" id="byte7" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte8" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte9" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte10" type="text" value="01" maxlength="2">
+    <input class="byte-input" id="byte11" type="text" value="ff" maxlength="2">
+    <input class="byte-input" id="byte12" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte13" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte14" type="text" value="00" maxlength="2"><br>
+    <input class="byte-input" id="byte15" type="text" value="cc" maxlength="2">
+    <input class="byte-input" id="byte16" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte17" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte18" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte19" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte20" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte21" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte22" type="text" value="00" maxlength="2"><br>
+    <input class="byte-input" id="byte23" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte24" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte25" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte26" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte27" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte28" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte29" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte30" type="text" value="00" maxlength="2"><br>
+    <input class="byte-input" id="byte31" type="text" value="00" maxlength="2">
+    <label>輸入格式: 10進位</label><br>
+    <input class="byte-input" id="Sendlength" type="text" value="64" maxlength="2"><button id="send8Bytes">發送</button>
+  </div>
+<!-- ...existing code... -->
+  <pre id="output"></pre>
+  <script src="webhid-lib-mb.js"></script>
+</body>
+</html>

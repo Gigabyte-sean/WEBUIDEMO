@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>WebHID 綜合範例</title>
+  <style>
+    .byte-input { width: 3em; text-align: center; }
+  </style>
+</head>
+<body>
+  <h1>WebHID 綜合範例</h1>
+  <button id="request">請求裝置授權</button>
+  <button id="list">列舉所有裝置</button>
+  <div>
+    <label>Vendor ID (16進位): <input id="vid" type="text" value="414" size="6"></label>
+    <label>Product ID (16進位): <input id="pid" type="text" value="8100" size="6"></label>
+    <button id="connectById">指定ID連線</button>
+  </div>
+  <div>
+    <label>裝置序號(從1開始): <input id="deviceIndex" type="number" value="1" min="1" size="4"></label>
+    <button id="connectByIndex">指定序號連線</button>
+  </div>  
+  <div>
+    <label>Report ID: <input id="reportId" type="text" value="00" size="4"></label>
+  </div>
+  <div>
+    <label>資7Bytes:</label>
+    <input class="byte-input" id="byte0" type="text" value="08" maxlength="2">
+    <input class="byte-input" id="byte1" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte2" type="text" value="01" maxlength="2">
+    <input class="byte-input" id="byte3" type="text" value="06" maxlength="2">
+    <input class="byte-input" id="byte4" type="text" value="32" maxlength="2">
+    <input class="byte-input" id="byte5" type="text" value="02" maxlength="2">
+    <input class="byte-input" id="byte6" type="text" value="01" maxlength="2">
+    <input class="byte-input" id="byte7" type="text" value="bb" maxlength="2">
+    <button id="send8Bytes">發送</button>
+  </div>
+  <pre id="output"></pre>
+  <script src="webhid-lib.js"></script>
+</body>
+</html>

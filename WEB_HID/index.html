@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Driver Helper</title>
+</head>
+<body>
+  <h2>本機裝置資訊</h2>
+  <pre id="deviceInfo">載入中...</pre>
+
+  <h2>選擇驅動</h2>
+  <button onclick="sendDownload()">下載並執行驅動</button>
+
+  <p id="result"></p>
+
+  <script>
+    const localBase = "http://127.0.0.1:54321";
+
+    fetch(`${localBase}/Get`)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("deviceInfo").textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(err => {
+        document.getElementById("deviceInfo").textContent = "⚠️ 無法連線到本地服務。";
+      });
+
+    function sendDownload() {
+      const driverList = {
+        driver: "abc123_driver",
+        version: "1.2.3"
+      };
+
+      fetch(`${localBase}/Download_Run`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(driverList)
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("result").textContent = `✅ 執行成功：${JSON.stringify(data)}`;
+      })
+      .catch(err => {
+        document.getElementById("result").textContent = `⚠️ 發送失敗：${err.message}`;
+      });
+    }
+  </script>
+</body>
+</html>
