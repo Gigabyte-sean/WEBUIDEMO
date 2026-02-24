@@ -5,6 +5,7 @@
   <title>WebHID 綜合範例</title>
   <style>
     .byte-input { width: 3em; text-align: center; }
+    .byte-input[readonly] { background-color: #f0f0f0; cursor: not-allowed; }
   </style>
 </head>
 <body>
@@ -13,8 +14,14 @@
   <button id="list">列舉所有裝置</button>
   <div>
     <label>Vendor ID (16進位): <input id="vid" type="text" value="414" size="6"></label>
-    <label>Product ID (16進位): <input id="pid" type="text" value="8100" size="6"></label>
+    <label>Product ID (16進位):
+      <select id="pidCombo">
+        <option value="">-- 請選擇 CHIP --</option>
+      </select>
+      <input id="pid" type="text" value="8100" size="6" style="display:none;">
+    </label>
     <button id="connectById">指定ID連線</button>
+    <button id="connectLedDevice">連接LED裝置</button>
   </div>
   <div>
     <label>裝置序號(從1開始): <input id="deviceIndex" type="number" value="1" min="1" size="4"></label>
@@ -24,18 +31,65 @@
     <label>Report ID: <input id="reportId" type="text" value="00" size="4"></label>
   </div>
   <div>
-    <label>資7Bytes:</label>
+    <label>效果選擇: 
+      <select id="effectCombo">
+        <option value="">-- 請選擇效果 --</option>
+      </select>
+    </label>
+  </div>
+  <div>
+    <label>顏色選擇:
+      <select id="colorCombo">
+        <option value="">-- 請選擇顏色 --</option>
+      </select>
+    </label>
+  </div>  
+  <div>
+    <label>速度 (<span id="brightnessMin">1</span>-<span id="brightnessMax">11</span>): 
+      <input type="range" id="brightnessSlider" min="1" max="11" value="6" step="1">
+      <span id="brightnessValue">6</span>
+    </label>
+  </div>
+  <div>
+    <label>亮度 (<span id="speedMin">0</span>-<span id="speedMax">50</span>): 
+      <input type="range" id="speedSlider" min="0" max="50" value="50" step="1">
+      <span id="speedValue">50</span>
+    </label>
+  </div>
+  <div>
+    <label><input type="checkbox" id="globalCheckbox" checked="true"> 全區域</label>
+  </div> 
+  <div>
+    <label>區域選擇:
+      <select id="zoneCombo">
+        <option value="">-- 請選擇區域 --</option>
+      <!-- zoneCombo 預設禁用 -->
+      </select>
+    </label>
+  </div>   
+  <div>
+    <label>資料:</label>
     <input class="byte-input" id="byte0" type="text" value="08" maxlength="2">
-    <input class="byte-input" id="byte1" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte1" type="text" value="02" maxlength="2">
     <input class="byte-input" id="byte2" type="text" value="01" maxlength="2">
     <input class="byte-input" id="byte3" type="text" value="06" maxlength="2">
     <input class="byte-input" id="byte4" type="text" value="32" maxlength="2">
     <input class="byte-input" id="byte5" type="text" value="02" maxlength="2">
-    <input class="byte-input" id="byte6" type="text" value="01" maxlength="2">
-    <input class="byte-input" id="byte7" type="text" value="bb" maxlength="2">
+    <input class="byte-input" id="byte6" type="text" value="00" maxlength="2">
+    <input class="byte-input" id="byte7" type="text" value="00" maxlength="2" readonly>
+    <input class="byte-input" id="byte8" type="text" value="00" maxlength="2" readonly>
     <button id="send8Bytes">發送</button>
   </div>
   <pre id="output"></pre>
+  <button id="clearOutput">清除輸出</button>
+  <script src="effects-data.js"></script>
   <script src="webhid-lib.js"></script>
+  <script src="slider-limits.js"></script>
+  <script src="color-combo.js"></script>
+  <script src="global-checkbox.js"></script>
+  <script src="zone-combo.js"></script>
+  <script src="pid-combo.js"></script>
+  <script src="connect-buttons.js"></script>
+  <script src="zone-disable.js"></script>
 </body>
 </html>

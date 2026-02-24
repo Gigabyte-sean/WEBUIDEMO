@@ -1,0 +1,47 @@
+[
+  {
+    "Effect": 1,
+    "DESP": "1",
+    "LightZone": 8
+  },
+  {
+    "Effect": 2,
+    "DESP": "2",
+    "LightZone": 8
+  },
+  {
+    "Effect": 3,
+    "DESP": "3",
+    "LightZone": 8
+  },
+  {
+    "Effect": 4,
+    "DESP": "4",
+    "LightZone": 8
+  },
+  {
+    "Effect": 5,
+    "DESP": "5",
+    "LightZone": 8
+  },
+  {
+    "Effect": 6,
+    "DESP": "6",
+    "LightZone": 8
+  },
+  {
+    "Effect": 7,
+    "DESP": "7",
+    "LightZone": 8
+  },
+  {
+    "Effect": 8,
+    "DESP": "8",
+    "LightZone": 8
+  },
+  {
+    "Effect": 9,
+    "DESP": "9",
+    "LightZone": 8
+  }
+]
